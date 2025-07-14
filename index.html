@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Will You Go Out With Me?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       background-color: #ffbbff;
@@ -11,42 +12,79 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     .container {
       text-align: center;
+      position: relative;
     }
 
     h1 {
       margin-bottom: 40px;
+      font-weight: 600;
+      font-size: 2.5rem;
+      color: #4a004a;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .button-row {
+      position: relative;
+      display: inline-block;
     }
 
     button {
-      font-size: 20px;
-      padding: 10px 20px;
+      font-size: 1.2rem;
+      padding: 12px 28px;
       margin: 0 10px;
       cursor: pointer;
-      position: relative;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, transform 0.15s;
+      font-weight: 600;
+      color: #fff;
+      user-select: none;
+    }
+
+    #yesBtn {
+      background-color: #6a0dad; /* purple */
+    }
+
+    #yesBtn:hover {
+      background-color: #8a32e0;
+      transform: scale(1.05);
     }
 
     #noBtn {
       position: absolute;
+      top: 0;
+      left: 140px; /* next to yes */
+      background-color: #d62828; /* red */
+      box-shadow: 0 4px 10px rgba(214,40,40,0.6);
+    }
+
+    #noBtn:hover {
+      background-color: #ff4949;
+      transform: scale(1.1);
     }
 
     #response {
       margin-top: 30px;
-      font-size: 24px;
-      color: green;
-      font-weight: bold;
+      font-size: 1.8rem;
+      color: #1a661a;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Will you go out with me?</h1>
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
+    <div class="button-row">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
     <div id="response"></div>
   </div>
 
@@ -55,27 +93,23 @@
     const yesBtn = document.getElementById('yesBtn');
     const response = document.getElementById('response');
 
-    // Move the "No" button to a random position
+    // Move the "No" button to a random position on hover or click
     function moveNoButton() {
       const maxX = window.innerWidth - noBtn.offsetWidth;
       const maxY = window.innerHeight - noBtn.offsetHeight;
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
+      noBtn.style.position = 'fixed';
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
     }
 
-    // Attach both hover and click to move the "No" button
     noBtn.addEventListener('mouseenter', moveNoButton);
     noBtn.addEventListener('click', moveNoButton);
 
-    // Show "Right answer" when "Yes" is clicked
     yesBtn.addEventListener('click', () => {
       response.textContent = 'Right answer 😊';
     });
-
-    // Start with a good position for "No" button
-    moveNoButton();
   </script>
 </body>
 </html>
