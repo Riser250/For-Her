@@ -9,12 +9,6 @@
       height: 100%;
       margin: 0;
       background-color: #ffbbff;
-      background-image: 
-        url('https://www.transparenttextures.com/patterns/hearts.png'),
-        url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1350&q=80');
-      background-size: auto, cover;
-      background-repeat: repeat, no-repeat;
-      background-position: top left, center;
       font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
@@ -28,9 +22,6 @@
       flex-direction: column;
       align-items: center;
       gap: 20px;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 40px;
-      border-radius: 16px;
     }
 
     .intro {
@@ -39,7 +30,7 @@
       color: #4a004a;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
       margin: 0;
-      margin-left: -20px;
+      margin-left: -20px; /* Shift left */
     }
 
     h1 {
@@ -53,9 +44,9 @@
     .button-row {
       position: relative;
       display: inline-block;
-      width: 280px;
+      width: 280px; /* enough space to place buttons */
       height: 50px;
-      margin-left: 40px;
+      margin-left: 40px; /* shifted right */
     }
 
     button {
@@ -76,23 +67,28 @@
     }
 
     #yesBtn {
-      background-color: #9caf88; /* sage green */
+      background-color: #6a0dad; /* purple */
       left: 0;
     }
 
     #yesBtn:hover {
-      background-color: #b2c9a0;
+      background-color: #8a32e0;
       transform: scale(1.05);
     }
 
     #noBtn {
-      background-color: #b57edc; /* lavender */
-      box-shadow: 0 4px 10px rgba(181, 126, 220, 0.5);
-      left: 140px;
+      background-color: #d62828; /* red */
+      box-shadow: 0 4px 10px rgba(214,40,40,0.6);
+      left: 140px; /* right next to yes */
+      position: absolute;
+      top: 0;
+      height: 50px;
+      line-height: 26px;
+      border-radius: 12px;
     }
 
     #noBtn:hover {
-      background-color: #c89be6;
+      background-color: #ff4949;
       transform: scale(1.1);
     }
 
@@ -107,7 +103,7 @@
 </head>
 <body>
   <div class="container">
-    <p class="intro">Luca asks Maiya</p>
+    <p class="intro">Luca asks Maiya if</p>
     <h1>Will you go out with me?</h1>
     <div class="button-row">
       <button id="yesBtn">Yes</button>
@@ -121,17 +117,6 @@
     const yesBtn = document.getElementById('yesBtn');
     const response = document.getElementById('response');
 
-    let yesClickCount = 0;
-
-    yesBtn.addEventListener('click', () => {
-      yesClickCount++;
-      if (yesClickCount < 3) {
-        response.textContent = 'Right answer';
-      } else {
-        response.textContent = "Don't be so desperate";
-      }
-    });
-
     function moveNoButton() {
       const maxX = window.innerWidth - noBtn.offsetWidth;
       const maxY = window.innerHeight - noBtn.offsetHeight;
@@ -144,6 +129,10 @@
 
     noBtn.addEventListener('mouseenter', moveNoButton);
     noBtn.addEventListener('click', moveNoButton);
+
+    yesBtn.addEventListener('click', () => {
+      response.textContent = 'Right answer';
+    });
   </script>
 </body>
 </html>
