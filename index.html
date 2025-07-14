@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Go Out With Me?</title>
+  <style>
+    body {
+      background-color: #ffbbff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    #response {
+      margin-top: 30px;
+      font-size: 24px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Will you go out with me?</h1>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const response = document.getElementById('response');
+
+    // Move the "No" button to a random position
+    function moveNoButton() {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
+
+    // Attach both hover and click to move the "No" button
+    noBtn.addEventListener('mouseenter', moveNoButton);
+    noBtn.addEventListener('click', moveNoButton);
+
+    // Show "Right answer" when "Yes" is clicked
+    yesBtn.addEventListener('click', () => {
+      response.textContent = 'Right answer 😊';
+    });
+
+    // Start with a good position for "No" button
+    moveNoButton();
+  </script>
+</body>
+</html>
