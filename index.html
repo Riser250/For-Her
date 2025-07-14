@@ -21,7 +21,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 20px;
+    }
+
+    .intro {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #4a004a;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      margin: 0;
     }
 
     h1 {
@@ -37,7 +45,7 @@
       display: inline-block;
       width: 280px; /* enough space to place buttons */
       height: 50px;
-      margin-left: 40px; /* <-- shifted right */
+      margin-left: 40px; /* shifted right */
     }
 
     button {
@@ -94,6 +102,7 @@
 </head>
 <body>
   <div class="container">
+    <p class="intro">Luca asks Maiya</p>
     <h1>Will you go out with me?</h1>
     <div class="button-row">
       <button id="yesBtn">Yes</button>
@@ -121,7 +130,7 @@
     noBtn.addEventListener('click', moveNoButton);
 
     yesBtn.addEventListener('click', () => {
-      response.textContent = 'Right answer 😊';
+      response.textContent = 'Right answer';
     });
   </script>
 </body>
