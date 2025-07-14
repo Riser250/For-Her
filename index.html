@@ -9,6 +9,12 @@
       height: 100%;
       margin: 0;
       background-color: #ffbbff;
+      background-image: 
+        url('https://www.transparenttextures.com/patterns/hearts.png'),
+        url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1350&q=80');
+      background-size: auto, cover;
+      background-repeat: repeat, no-repeat;
+      background-position: top left, center;
       font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
@@ -22,6 +28,9 @@
       flex-direction: column;
       align-items: center;
       gap: 20px;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 16px;
     }
 
     .intro {
@@ -72,18 +81,18 @@
     }
 
     #yesBtn:hover {
-      background-color: #b2c9a0; /* lighter sage */
+      background-color: #b2c9a0;
       transform: scale(1.05);
     }
 
     #noBtn {
-      background-color: #b57edc; /* lavender purple */
+      background-color: #b57edc; /* lavender */
       box-shadow: 0 4px 10px rgba(181, 126, 220, 0.5);
       left: 140px;
     }
 
     #noBtn:hover {
-      background-color: #c89be6; /* lighter lavender */
+      background-color: #c89be6;
       transform: scale(1.1);
     }
 
@@ -112,6 +121,17 @@
     const yesBtn = document.getElementById('yesBtn');
     const response = document.getElementById('response');
 
+    let yesClickCount = 0;
+
+    yesBtn.addEventListener('click', () => {
+      yesClickCount++;
+      if (yesClickCount < 3) {
+        response.textContent = 'Right answer';
+      } else {
+        response.textContent = "Don't be so desperate";
+      }
+    });
+
     function moveNoButton() {
       const maxX = window.innerWidth - noBtn.offsetWidth;
       const maxY = window.innerHeight - noBtn.offsetHeight;
@@ -124,10 +144,6 @@
 
     noBtn.addEventListener('mouseenter', moveNoButton);
     noBtn.addEventListener('click', moveNoButton);
-
-    yesBtn.addEventListener('click', () => {
-      response.textContent = 'Right answer';
-    });
   </script>
 </body>
 </html>
