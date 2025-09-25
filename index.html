@@ -5,15 +5,26 @@
   <title>Will You Be My Girlfriend?</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <style>
-  html, body {
-    margin: 0;
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffbbff; /* fallback color for scrolling section */
+}
 
-    /* Background image */
-    background: url('https://cdn.discordapp.com/attachments/956927480470577213/1420783480492785774/Photo_Collage.png?ex=68d6a73a&is=68d555ba&hm=18f25e78f3342c1996aeda2db0cf7d8e888d85e20314550ced03253d2181b5f0&') no-repeat center center fixed;
-    background-size: cover; /* makes it fill the screen */
-  }
+/* Only the top section gets the background image */
+.hero {
+  height: 100vh; /* fill the first screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background: url("https://cdn.discordapp.com/attachments/956927480470577213/1420783480492785774/Photo_Collage.png?ex=68d6a73a&is=68d555ba&hm=18f25e78f3342c1996aeda2db0cf7d8e888d85e20314550ced03253d2181b5f0&") no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+}
+
 
 
     .container {
@@ -113,15 +124,16 @@ h1 {
   </style>
 </head>
 <body>
-  <div class="container">
-    <p class="intro">Luca asks Maiya for real this time</p>
-    <h1>Will you be my girlfriend? Officially This Time</h1>
-    <div class="button-row">
-      <button id="yesBtn">Yes</button>
-      <button id="noBtn">No</button>
-    </div>
-    <div id="response"></div>
+  <div class="hero">
+  <p class="intro">Luca asks Maiya for real this time</p>
+  <h1>Will you be my girlfriend? Officially This Time</h1>
+  <div class="button-row">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
   </div>
+  <div id="response"></div>
+</div>
+
 
   <!-- scrollable content -->
   <div class="extra">
